@@ -4,6 +4,24 @@ Automate the management, upload, and metadata collection of Digital Learning Obj
 
 ---
 
+## Table of Contents
+
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Main Scripts](#main-scripts)
+- [JavaScript Automation](#javascript-automation)
+- [Data & Logging](#data--logging)
+- [Changelog](#changelog)
+- [Extending & Customization](#extending--customization)
+- [Troubleshooting](#troubleshooting)
+- [License](#license)
+- [Contributing](#contributing)
+
+---
+
 ## Features
 
 - **Automated DLO Management:** Upload, delete, and update DLOs and their metadata on the platform.
@@ -15,6 +33,7 @@ Automate the management, upload, and metadata collection of Digital Learning Obj
 - **Lesson-Specific Data:** Manages DLOs and logs per lesson folder for easy organization.
 - **Dummy DLO Generation:** Supports creation of dummy DLOs for testing and validation.
 - **Customizable Automation:** Easily extendable with new JS scripts for additional platform actions.
+- **Flexible Logging:** Per-lesson logs and error reports for traceability.
 
 ---
 
@@ -33,18 +52,17 @@ PlatformAutomate/
 │           ├── entries.json
 │           ├── Files_Uploaded-<date>.csv
 │           └── ...
-├── env/
-│   └── ...
 └── src/
-    ├── anaklisi.py
-    ├── anartisi.py
+    ├── available_to_selected.py
     ├── collect_metadata.py
     ├── create_dummies.py
     ├── delete_and_upload_files.py
-    ├── diathesima_pros_epilegmena.py
-    ├── epilegmena_pros_diathesima.py
     ├── main.py
+    ├── recall.py
+    ├── selected_to_available.py
+    ├── submit.py
     ├── update_metadata.py
+    ├── version_checker.py
     ├── data/
     │   └── lessons.py
     ├── js_scripts/
@@ -57,6 +75,7 @@ PlatformAutomate/
         ├── find_excel_openpy.py
         ├── write_to_CSV.py
         └── ...
+    
 ```
 
 ---
@@ -65,14 +84,28 @@ PlatformAutomate/
 
 - Python 3.10+
 - Selenium
-- Pillow (for image creation)
-- Chrome, Edge, or Firefox browser
-- Node.js (for running JS scripts outside Selenium, if needed)
+- Pillow (to create the thumbnails for the dummy files)
 
-Install dependencies:
-```sh
-pip install -r requirements.txt
-```
+---
+
+## Installation
+
+1. **Clone the repository:**
+   ```sh
+   git clone <your-repo-url>
+   cd PlatformAutomate
+   ```
+
+2. **(Optional) Set up a virtual environment:**
+   ```sh
+   python -m venv env
+   source env/bin/activate  # On Windows: env\Scripts\activate
+   ```
+
+3. **Install Python dependencies:**
+   ```sh
+   pip install -r requirements.txt
+   ```
 
 ---
 
@@ -151,6 +184,16 @@ See [`changelog.txt`](changelog.txt) for detailed version history, bug fixes, an
 - Ensure the correct browser driver is installed and matches your browser version.
 - If the platform UI changes, update the relevant JS scripts in [`src/js_scripts/`](src/js_scripts/).
 - Check the `Logs/` folder for per-lesson logs and error reports.
+
+---
+
+## License
+
+Copyright (c) 2025
+
+All rights reserved.  
+This software and its contents may be viewed for reference or educational purposes.  
+No copying, modification, distribution, or use in other projects is permitted without prior written permission from the copyright holder.
 
 ---
 
